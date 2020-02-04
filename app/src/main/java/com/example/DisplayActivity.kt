@@ -1,5 +1,7 @@
 package com.example
 
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -44,6 +46,18 @@ class DisplayActivity : AppCompatActivity() {
     override fun onDestroy() {
         Log.v(TAG_DISPLAY_ACITIVTY, "onDestroy")
         super.onDestroy()
+    }
+
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }else {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+
     }
 
 }

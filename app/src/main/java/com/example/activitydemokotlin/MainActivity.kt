@@ -71,4 +71,9 @@ class MainActivity : AppCompatActivity() {
         Log.v(TAG_DISPLAY_ACITIVTY,data?.getParcelableExtra<Car>("CAR").toString())
 
     }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+
 }

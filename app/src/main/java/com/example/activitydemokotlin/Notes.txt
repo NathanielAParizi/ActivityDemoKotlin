@@ -1,5 +1,73 @@
+//**************
 
+Activity - Base UI component of Android
+		-Activity can have different states
+		-Those states refer to Activity lifecycle
+		- The possible states
+			- onCreate()
+			- onStart()                      <—
+			-onResume()                       |
+			-onPause()			    |
+			-onStop(). —> -onRestart()|
+			-onDestroy()
 
+onCreate - activity initialized in memory
+onStart -   when the activity is visible but not intractable
+                   (When the activity is coming into the foreground)
+onResume -  when the activity is both intractable and visible
+	- activity in the foreground
+-onPause. - when the activity is visible but not intractable in
+                     The background.
+onStop -       When the activity is NIETHER visible and ntractable.
+			When the activity is in the background. Nothing is deallocated from memory.
+
+onRestart.  - When the activity is NIETHER visible and intractable
+		- Reinitiaializaiton of required items before starting to come in the foreground
+
+onDestroy - When the activities memory deallocated.
+		 - Note: This is controlled by the android ester and is not guaranteed to run.
+
+-Each state has a corresponding callback that is part of the activity class.
+
+- Callback = interface 
+
+const val TAG_MAIN_ACTIVITY = "TAG MAIN"   //Initialized at compile time
+val someValue = ""  //Initialized at run time
+ Lint - static code analysis tool in Android Studio.
+	- checks for styling, optimizations, and syntax errors.
+	- To customize the lint analysis, use a custom check style xml.
+
+- Starting Activities  - Starting an activity normally
+    - Use the startAcitivty function
+    - Takes the intent as a parameter
+
+- The intent type doesn’t matter when you’re starting an activity. Thats a concern of the package
+   manager. If you use implicit the intent filter for that component which will be use to process
+   that invocation it must be set up.
+
+- Start an activity for result data
+    - Use the startActivityForResultMethod
+		2 parameters:
+		-Intent
+		-Resquest code
+			-Developer defined
+		- Used to filter proper action later.
+
+- In the activity which will return the result data - attach the result data to an intent
+    - Call the setResult method
+    - 2 parameters
+        - Intent
+        - Result code (used to filter actions later)
+    - Call finish()
+        - Manually ask Android to destroy the activity.
+    - In the Activity which called the Activity to get the data:
+        - Override the onActivityResult function.
+            - 3 Parameters
+                - Intent paste back from data gathering activity
+                - -Request code
+                - Result code
+
+***************************
 
 Configuration Changes and the Activity
     - Changes to the profile of the device
@@ -9,4 +77,34 @@ Configuration Changes and the Activity
         - Activity is recreated
     - Ways to handle orientaiton changes
         1. Do not allow orientation attribute of the activity in the manifest
-        2.
+        2. The saveInstanceState Bundle
+            - override the onSaveInstanceState function
+            - 2 places that can reload the data
+                - onCreate() is passed the savedInstanceState Bundle
+                - overriding the onRestoreInstanceState function
+        3. manually control configuration changes with:
+            - overriding the onConfigurationChange
+            - setting the activities manifest attribute
+
+
+****************************
+
+ - Launch Modes (Activity Affinity  /  Task Affinity)
+  - As your activites are created, they are added to what is called the TASK STACK
+  - Each INSTANCE of an application has a TASK STACK / ACTIVITY STACK
+  - To control how these activites are added to the task(s) stacks, we have 2 ways:
+        - Intent Flags
+        - Launch Mode Attribute (in the Manifest)
+           Modes:
+                -Standard mode
+                    - Doesn't consider the state of any task stack  (by default)
+                -SingleTop mode
+                    - Looks at the top of the task stack
+                    - Only one instance allowed the top of the stack
+                -SingleInstance mode
+                    - Only one instance allowed of activity in that TASK STACK
+                -SingleTask mode
+                    - Only one instance is allowed of the activity across all the INSTANCE of the
+                      app
+
+             
