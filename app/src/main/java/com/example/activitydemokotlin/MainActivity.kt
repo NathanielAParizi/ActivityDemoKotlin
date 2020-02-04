@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, DataEntry::class.java)
                 startActivityForResult(intent,123)
             }
+
         }
 
 

@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_data_entry.*
 
 class DataEntry : AppCompatActivity() {
 
-    lateinit var passedIntent : Intent
+    lateinit var passedIntent: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,7 @@ class DataEntry : AppCompatActivity() {
 
     fun onClick(view: View) {
 
-        when(view.id){
+        when (view.id) {
             R.id.btn -> {
                 val make = etMake.text.toString()
                 val model = etModel.text.toString()
@@ -27,20 +27,12 @@ class DataEntry : AppCompatActivity() {
                 val color = etColor.text.toString()
                 val userEnteredCar = Car(make, model, year, color)
 
-                passedIntent.putExtra("CAR",userEnteredCar)
+                passedIntent.putExtra("CAR", userEnteredCar)
 
-                setResult(321,passedIntent)
+                setResult(321, passedIntent)
                 finish()
 
             }
-            R.id.dataEntryBtn -> {
-
-                val intent = Intent(this, DataEntry::class.java)
-                startActivityForResult(intent,123)
-
-
-            }
-
 
 
         }

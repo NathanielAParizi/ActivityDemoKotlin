@@ -1,0 +1,12 @@
+
+
+
+Configuration Changes and the Activity
+    - Changes to the profile of the device
+        - Example: Orientational Changes
+    - What happens to an Activity when a configuration change occurs
+        - Activity is destroyed
+        - Activity is recreated
+    - Ways to handle orientaiton changes
+        1. Do not allow orientation attribute of the activity in the manifest
+        2.
