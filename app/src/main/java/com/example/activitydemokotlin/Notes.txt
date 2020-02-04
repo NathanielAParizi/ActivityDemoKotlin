@@ -1,35 +1,37 @@
-//**************
+//************************************************************************************
 
 Activity - Base UI component of Android
 		-Activity can have different states
 		-Those states refer to Activity lifecycle
 		- The possible states
 			- onCreate()
-			- onStart()                      <—
-			-onResume()                       |
-			-onPause()			    |
-			-onStop(). —> -onRestart()|
-			-onDestroy()
+			- onStart()            <—
+			- onResume()             |
+			- onPause()			     |
+			- onStop(). —> -onRestart()
+			- onDestroy()
 
-onCreate - activity initialized in memory
-onStart -   when the activity is visible but not intractable
+    onCreate - activity initialized in memory
+    onStart -   when the activity is visible but not intractable
                    (When the activity is coming into the foreground)
-onResume -  when the activity is both intractable and visible
-	- activity in the foreground
--onPause. - when the activity is visible but not intractable in
+    onResume -  when the activity is both intractable and visible
+	             activity in the foreground
+    onPause. - when the activity is visible but not intractable in
                      The background.
-onStop -       When the activity is NIETHER visible and ntractable.
+    onStop -       When the activity is NEITHER visible and ntractable.
 			When the activity is in the background. Nothing is deallocated from memory.
 
-onRestart.  - When the activity is NIETHER visible and intractable
-		- Reinitiaializaiton of required items before starting to come in the foreground
+    onRestart.  - When the activity is NEITHER visible and intractable
+		- Reinitialization of required items before starting to come in the foreground
 
-onDestroy - When the activities memory deallocated.
+    onDestroy - When the activities memory deallocated.
 		 - Note: This is controlled by the android ester and is not guaranteed to run.
 
--Each state has a corresponding callback that is part of the activity class.
 
-- Callback = interface 
+
+    -Each state has a corresponding callback that is part of the activity class.
+
+    - Callback = interface 
 
 const val TAG_MAIN_ACTIVITY = "TAG MAIN"   //Initialized at compile time
 val someValue = ""  //Initialized at run time
@@ -67,7 +69,7 @@ val someValue = ""  //Initialized at run time
                 - -Request code
                 - Result code
 
-***************************
+*********************************************************************************
 
 Configuration Changes and the Activity
     - Changes to the profile of the device
@@ -87,7 +89,7 @@ Configuration Changes and the Activity
             - setting the activities manifest attribute
 
 
-****************************
+**********************************************************************************
 
  - Launch Modes (Activity Affinity  /  Task Affinity)
   - As your activites are created, they are added to what is called the TASK STACK
@@ -107,4 +109,7 @@ Configuration Changes and the Activity
                     - Only one instance is allowed of the activity across all the INSTANCE of the
                       app
 
-             
+      In volatile Memory = Data Persistence (Saving data in memory on the device)
+
+
+*********************************************************************************
